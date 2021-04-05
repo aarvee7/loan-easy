@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server/app/app.js",
+    "start": "nodemon server/app/app.js",
     "begin": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -24,6 +24,8 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "helmet": "^4.2.0",
+    "mongodb": "^3.6.5",
+    "nodemon": "^2.0.7",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
