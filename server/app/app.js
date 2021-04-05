@@ -16,7 +16,7 @@ app.use(
     extended: true,
   })
 );
-app.use(express.static("../../dist/EXG-R01"));
+app.use(express.static(__dirname+ "../../dist/EXG-R01"));
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
