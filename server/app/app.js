@@ -26,9 +26,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => {
-  res.send("Welome");
-});
+// app.get("/", (req, res) => {
+//   res.send("Welome");
+// });
 app.use("/api", routes);
 
 app.listen(port, () => {

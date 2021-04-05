@@ -3,8 +3,10 @@ const router = express.Router();
 
 const controller = require("../controller/master");
 
-router.get("/test", controller.test);
-router.get("/db", controller.fetchData);
-router.post("/new", controller.postData);
+const urlPrefix = "/v1";
+
+router.get(urlPrefix + "/test", controller.test);
+router.get(urlPrefix + "/db", controller.fetchData);
+router.post(urlPrefix + "/new", controller.postData);
 
 module.exports = router;
