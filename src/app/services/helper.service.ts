@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HelperService {
   constructor(private httpClient: HttpClient) {}
-  private url = 'http://localhost:3000/api/v1';
+  // private url = 'http://localhost:3000/api/v1';
+  private url = 'http://featurefirst.herokuapp.com/api/v1';
   getData() {
     return this.httpClient.get(this.url + '/db');
   }
