@@ -11,4 +11,9 @@ export class HelperService {
   getData() {
     return this.httpClient.get(this.url + '/db');
   }
+  postData(data) {
+    this.httpClient
+      .post(this.url + '/new', data)
+      .subscribe((res) => console.log(res));
+  }
 }
