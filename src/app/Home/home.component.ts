@@ -54,6 +54,9 @@ export class HomeComponent implements OnInit {
   }
   onSubmit(post) {
     console.log(post);
+    this.helperService.getData().subscribe((result) => {
+      console.log(result);
+    });
     this.helperService.postData(post);
     // this.post = post;
   }

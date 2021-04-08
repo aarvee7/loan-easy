@@ -32,6 +32,10 @@
     (ngSubmit)="onSubmit(formGroup.value)"
     class="form"
   >
+    <mat-card-title>
+      <span>Login with Google </span>
+      <span class="fa fa-google"></span>
+    </mat-card-title>
     <mat-form-field floatLabel="never" class="form-element">
       <input
         type="email"
@@ -64,7 +68,7 @@
         class="button"
         [disabled]="!formGroup.valid"
       >
-        Submit Form
+        LogIn
       </button>
     </div>
   </form>

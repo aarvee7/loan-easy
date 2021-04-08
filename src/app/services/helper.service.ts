@@ -9,11 +9,11 @@ export class HelperService {
   // private url = 'http://localhost:3000/api/v1';
   private url = 'http://featurefirst.herokuapp.com/api/v1';
   getData() {
-    return this.httpClient.get(this.url + '/db');
+    return this.httpClient.get(`${this.url}/db`);
   }
   postData(data) {
-    this.httpClient
-      .post(this.url + '/new', data)
+    return this.httpClient
+      .post(`${this.url}/new`, data)
       .subscribe((res) => console.log(res));
   }
 }
