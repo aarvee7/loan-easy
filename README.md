@@ -22,4 +22,4 @@ Simple loan calculator which will give monthly emi's and total amount payable.( 
 
 **if some more time available would have included all the requirements.
 
-LINK - 
+LINK - https://loan-easy.herokuapp.com
