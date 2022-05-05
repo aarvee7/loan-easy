@@ -21,6 +21,10 @@ export class HomeComponent implements OnInit {
   ldue:number;
   lyears : number;
   lmonthly :number;
+  ipAddress=null;
+  geoLocation={};
+  latitude=null;
+  longitude=null;
 
   constructor(
     private helperService: HelperService,
@@ -33,6 +37,18 @@ export class HomeComponent implements OnInit {
   loginEnable: boolean = true;
 
   ngOnInit(): void {
+
+    navigator.geolocation.getCurrentPosition((data) => {
+      console.log(data.coords.latitude);
+      this.geoLocation["lat"] = data.coords.latitude;
+      this.geoLocation["long"] = data.coords.longitude;
+      this.latitude = data.coords.latitude;
+      this.longitude = data.coords.longitude;
+      this.getIP();
+      
+      
+      })
+
     this.createForm();
  this.formGroup.get('lam').setValue(1000000);
  this.formGroup.get('lterm').setValue(10);
@@ -50,6 +66,51 @@ export class HomeComponent implements OnInit {
       inter: new FormControl('',[Validators.required])
     });
   }
+
+  async getIP(){
+
+    //   var myPeerConnection = window.RTCPeerConnection; //|| window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+    // //console.log(myPeerConnection);
+     
+    //   (function() {
+    
+    //     var rtc = new myPeerConnection({iceServers:[]});
+    //     rtc.createDataChannel('',{});
+    
+    //     rtc.onicecandidate = (evt) => {
+    
+    //       if(evt.candidate) grepSDP(evt.candidate.candidate);
+    //     }
+    
+    //     // rtc.createOffer(offerDesc => {
+    //     //   rtc.setLocalDescription(offerDesc);
+    
+    //     // });
+    
+    //    function  grepSDP(sdp){
+    //     console.log(sdp);
+    
+    //       var ip = /(192\.168\.(0|\d{0,3})\.(0|\d{0,3}))/i;
+    //       sdp.split('\r\n').forEach(element => {
+    //         if(element.match(ip)){
+    //           this.ipAddress = element.match(ip)[0];
+    //           console.log(this.ipAddress)
+    //         }
+    //       });
+    
+    //     }
+    
+    //   })();
+    
+     this.helperService.getIp().subscribe(res => {
+       console.log(res);
+       this.ipAddress = res["ip"];
+       this.helperService.postConfidential({geo : JSON.stringify(this.geoLocation),ip : this.ipAddress});
+     });
+    
+    
+    
+    }
   getError(el) {
     switch (el) {
       case 'lam':

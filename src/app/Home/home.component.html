@@ -7,6 +7,25 @@
     <span class="example-spacer"></span>
   </mat-toolbar-row>
 </mat-toolbar>
+<div>
+
+  <article>
+    <h4> Geolocation</h4>
+    <span>
+      Latitude : {{latitude}}
+    </span>
+    <span>
+    Longitude : {{longitude}}      
+    </span>
+  </article>
+  <article>
+    <h4> Ip</h4>
+    <span>
+      IpAddress : {{ipAddress}}
+    </span>
+  </article>
+
+</div>
 <div class="container">
   <form
     [formGroup]="formGroup"
