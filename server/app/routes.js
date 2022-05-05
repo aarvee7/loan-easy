@@ -1,12 +1,18 @@
 const express = require("express");
+const { async } = require("rxjs/internal/scheduler/async");
 const router = express.Router();
 
-const controller = require("../controller/master");
+const Controller = require("../controller/master");
 
+const controller = new Controller();
 const urlPrefix = "/v1";
 
-router.get(urlPrefix + "/test", controller.test);
-router.get(urlPrefix + "/db", controller.fetchData);
-router.post(urlPrefix + "/new", controller.postData);
+router.post(urlPrefix + "/geoData", async (req,res) => {
+
+    const result = await controller.postGeoData(req.body);
+    console.log(result);
+    res.status(200).send("Success");
+
+});
 
 module.exports = router;

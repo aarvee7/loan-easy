@@ -6,14 +6,17 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HelperService {
   constructor(private httpClient: HttpClient) {}
-  // private url = 'http://localhost:3000/api/v1';
-  private url = 'http://featurefirst.herokuapp.com/api/v1';
-  getData() {
-    return this.httpClient.get(`${this.url}/db`);
-  }
-  postData(data) {
+   //private url = 'http://localhost:3000/api/v1';
+  private url = 'http://loan-easy.herokuapp.com/api/v1';
+  private ipurl = 'http://api.ipify.org/?format=json';
+ 
+
+  async postConfidential(data) {
     return this.httpClient
-      .post(`${this.url}/new`, data)
-      .subscribe((res) => console.log(res));
+      .post(`${this.url}/geoData`, data).toPromise();
+      }
+
+  getIp(){
+    return this.httpClient.get(this.ipurl);
   }
 }

@@ -1,27 +1,25 @@
-# EXGR01
+I have used Angular as Front End since i havent got oppurtunity to work in React.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.3.
+Stack Used : 
 
-## Development server
+Front End - Angular
+Back End - NodeJs
+DB - Postgres
+Cloud - Heroku
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+I have created a loan calculator and captured Geolocation/ip address and stored in DB. (No provision in UI placed for Geolocation and IP).
+Please, go through codebase to understand how it is written to capture data.
 
-## Code scaffolding
+I hosted the app in heroku and used their hobby postgres DB.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Table Name - "Confidential" which contains Geolocation and IP of the visitor.
 
-## Build
+Note- i have erased the data since it contains my ip information.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+please access the application and verify the DB for data capture. 
 
-## Running unit tests
+Simple loan calculator which will give monthly emi's and total amount payable.( Excuse the UI)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+**if some more time available would have included all the requirements.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+LINK - 

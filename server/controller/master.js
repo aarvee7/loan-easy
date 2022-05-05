@@ -1,25 +1,38 @@
 const reqest = require("request");
-const { dbConnect, dbName } = require("../app/db");
+const {Pool,Client} = require('pg');
 
-const test = async (req, res) => {
-  console.log("test");
-  res.send("helllowwwww");
-};
+const Cn = "postgres://eefqntfextdkxo:b18008421b2a6d572385d640d20a817c611e8dc938e16bc0174a5f1aa4598c0c@ec2-3-224-164-189.compute-1.amazonaws.com:5432/df6mv5vebpojsj";
 
-const getdata = async (req, res) => {
-  var cursor = dbName().find().toArray();
-  const result = await cursor;
-  console.log(result);
-  res.send(result);
-};
-
-const postdata = async (req, res) => {
-  const body = req.body;
-  console.log(body);
-  var cursor = dbName().insertOne(body).then(res.send("data saved"));
-};
-const postData = (module.exports = {
-  test: test,
-  fetchData: getdata,
-  postData: postdata,
+const pool = new Pool({
+  connectionString: Cn,
+  ssl : {
+    requestCert : true,
+    rejectUnauthorized : false
+  }
 });
+
+class Controllers {
+ 
+
+  async postGeoData(msg) {
+    var i1 = msg.geo;
+    // console.log(i1);
+    var i2 = msg.ip;
+    const query = "INSERT INTO confidential(geo,ip,name) VALUES($1, $2,$3) RETURNING*";
+    const values = [i1, i2,"name"];
+    return new Promise((resolve, reject) => {
+      pool.query(query, values, (err, res) => {
+        if (err) {
+          console.log(err.stack);
+        } else {
+          console.log(res.rows[0]);
+          resolve(res.rows[0]);
+        }
+      });
+    });
+  }
+
+
+}
+
+module.exports = Controllers;

@@ -1,29 +1,10 @@
 <!-- <p>home works!</p> -->
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>FeatureFirst</span>
+    <span>Loan Easy</span>
     <span class="example-fill-remaining-space"></span>
     <span class="align-center"></span>
     <span class="example-spacer"></span>
-    <button mat-button>About</button>
-    <button mat-button>Contact</button>
-    <!-- <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>more_vert</mat-icon>
-    </button> -->
-    <!-- <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <mat-icon>dialpad</mat-icon>
-        <span>Redial</span>
-      </button>
-      <button mat-menu-item disabled>
-        <mat-icon>voicemail</mat-icon>
-        <span>Check voicemail</span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon>notifications_off</mat-icon>
-        <span>Disable alerts</span>
-      </button>
-    </mat-menu> -->
   </mat-toolbar-row>
 </mat-toolbar>
 <div class="container">
@@ -33,30 +14,41 @@
     class="form"
   >
     <mat-card-title>
-      <span>Login with Google </span>
-      <span class="fa fa-google"></span>
+      <span>Loan Calculator </span>
     </mat-card-title>
     <mat-form-field floatLabel="never" class="form-element">
       <input
-        type="email"
+        type="number"
         matInput
-        placeholder="Email Id"
-        formControlName="email"
+        placeholder="loan amount"
+        formControlName="lam"
       />
-      <mat-error *ngIf="formGroup.controls['email'].invalid">
-        {{ getError("email") }}
+      <mat-error *ngIf="formGroup.controls['lam'].invalid">
+        {{ getError("lam") }}
       </mat-error>
     </mat-form-field>
 
     <mat-form-field floatLabel="never" class="form-element">
       <input
-        type="password"
+        type="number"
         matInput
-        placeholder="Password"
-        formControlName="password"
+        placeholder="Loan Tenure in years"
+        formControlName="lterm"
       />
-      <mat-error *ngIf="!formGroup.controls['password'].valid">
-        {{ getError("pass") }}
+      <mat-error *ngIf="!formGroup.controls['lterm'].valid">
+        {{ getError("lterm") }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="never" class="form-element">
+      <input
+        type="number"
+        matInput
+        placeholder="Interest in %"
+        formControlName="inter"
+      />
+      <mat-error *ngIf="!formGroup.controls['inter'].valid">
+        {{ getError("inter") }}
       </mat-error>
     </mat-form-field>
 
@@ -68,8 +60,45 @@
         class="button"
         [disabled]="!formGroup.valid"
       >
-        LogIn
+        Calculate
       </button>
     </div>
   </form>
+
+  <h2> Your Monthly EMI is : {{ lmonthly }}</h2>
+
+</div>
+<div *ngIf="showData" class="container">
+
+  <table >
+    <tr class="row">
+      <td class="col-6">
+        <mat-label>Loan Amount</mat-label>
+        <input matInput readonly [value]="lamount">  
+       
+      </td>
+      <td class="col-6">
+        <mat-label>Interest Rate in %</mat-label>
+        <input matInput readonly [value]="lrate">
+        
+     </td>
+      
+     
+  </tr></table>
+  <table >
+    <tr class="row">
+      <td class="col-6">
+        <mat-label>Total Interest Due</mat-label>
+        <input matInput readonly [value]="ldue">  
+       
+    </td>
+      <td class="col-6">
+        <mat-label>Total Amount Payable</mat-label>
+        <input matInput readonly [value]="lpay">
+        
+     </td>
+      
+     
+  </tr></table>
+
 </div>
